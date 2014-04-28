@@ -2,7 +2,7 @@
 <addon id="plugin.video.xvideos" name="XVideos" provider-name="willforde" version="1.0.0">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.xbmcutil" version="2.0.0"/>
+		<import addon="script.module.xbmcutil" version="2.0.2"/>
 	</requires>
 	<extension library="addon.py" point="xbmc.python.pluginsource">
 		<provides>video</provides>
