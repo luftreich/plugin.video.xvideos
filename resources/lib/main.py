@@ -25,7 +25,7 @@ class Initialize(listitem.VirtualFS):
 	def scraper(self):
 		# Fetch Video Content
 		url = u"http://www.xvideos.com/new/%i/" % (int(plugin.get("NextPageCount", 1))-1)
-		sourceCode = urlhandler.urlread(url, 3600) # TTL = 1 Hour
+		sourceCode = urlhandler.urlread(url, 604800) # TTL = 1 week
 		videoItems = parsers.VideoParser()
 		
 		# Set Content Properties
@@ -39,7 +39,7 @@ class Related(listitem.VirtualFS):
 	@plugin.error_handler
 	def scraper(self):
 		# Fetch Video Content
-		sourceCode = urlhandler.urlread(plugin["url"], 3600) # TTL = 1 Hour
+		sourceCode = urlhandler.urlread(plugin["url"], 14400) # TTL = 4 Hour
 		videoItems = parsers.Related()
 		
 		# Set Content Properties
@@ -53,7 +53,7 @@ class PlayVideo(listitem.PlayMedia):
 	@plugin.error_handler
 	def resolve(self):
 		# Create url for oembed api
-		sourceCode = urlhandler.urlread(plugin["url"])
+		sourceCode = urlhandler.urlread(plugin["url"], 14400) # TTL = 4 Hours
 		
 		# Search sourceCode
 		import re
