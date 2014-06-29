@@ -1,2 +1,6 @@
+[B]Version 1.0.1[/B]
+- Update Strings to string.po
+- Code Cleanup
+
 [B]Version 1.0.0[/B]
 - Initial Version
