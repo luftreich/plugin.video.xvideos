@@ -32,7 +32,7 @@ class VideoParser(HTMLParser.HTMLParser):
 		""" Parses SourceCode and Scrape Episodes """
 		
 		# Class Vars
-		self.counter = (int(plugin.get("NextPageCount",1)) -1) * 20
+		self.counter = (int(plugin.get("nextpagecount",1)) -1) * 20
 		self.divcount = None
 		self.section = 0
 		
@@ -133,7 +133,7 @@ class Related(HTMLParser.HTMLParser):
 		""" Parses SourceCode and Scrape Episodes """
 		
 		# Class Vars
-		self.counter = (int(plugin.get("NextPageCount",1)) -1) * 25
+		self.counter = (int(plugin.get("nextpagecount",1)) -1) * 25
 		self.divcount = None
 		self.section = 0
 		

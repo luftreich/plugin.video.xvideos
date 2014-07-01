@@ -24,7 +24,7 @@ class Initialize(listitem.VirtualFS):
 	@plugin.error_handler
 	def scraper(self):
 		# Fetch Video Content
-		url = u"http://www.xvideos.com/new/%i/" % (int(plugin.get("NextPageCount", 1))-1)
+		url = u"http://www.xvideos.com/new/%i/" % (int(plugin.get("nextpagecount", 1))-1)
 		sourceCode = urlhandler.urlread(url, 604800) # TTL = 1 week
 		videoItems = parsers.VideoParser()
 		
