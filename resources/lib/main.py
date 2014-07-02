@@ -25,29 +25,31 @@ class Initialize(listitem.VirtualFS):
 	def scraper(self):
 		# Fetch Video Content
 		url = u"http://www.xvideos.com/new/%i/" % (int(plugin.get("nextpagecount", 1))-1)
-		sourceCode = urlhandler.urlread(url, 604800) # TTL = 1 week
-		videoItems = parsers.VideoParser()
+		sourceObj = urlhandler.urlopen(url, 604800) # TTL = 1 week
+		videoItems = parsers.VideoParser().parse(sourceObj)
+		sourceObj.close()
 		
 		# Set Content Properties
 		self.set_sort_methods(self.sort_method_label, self.sort_method_video_runtime)
 		self.set_content("episodes")
 		
 		# Return List of Video Listitems
-		return videoItems.parse(sourceCode)
+		return videoItems
 
 class Related(listitem.VirtualFS):
 	@plugin.error_handler
 	def scraper(self):
 		# Fetch Video Content
-		sourceCode = urlhandler.urlread(plugin["url"], 14400) # TTL = 4 Hour
-		videoItems = parsers.Related()
+		sourceObj = urlhandler.urlopen(plugin["url"], 14400) # TTL = 4 Hour
+		videoItems = parsers.Related().parse(sourceObj)
+		sourceObj.close()
 		
 		# Set Content Properties
 		self.set_sort_methods(self.sort_method_label, self.sort_method_video_runtime)
 		self.set_content("episodes")
 		
 		# Return List of Video Listitems
-		return videoItems.parse(sourceCode)
+		return videoItems
 
 class PlayVideo(listitem.PlayMedia):
 	@plugin.error_handler

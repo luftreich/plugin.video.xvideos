@@ -28,7 +28,10 @@ class VideoParser(HTMLParser.HTMLParser):
 		Parses available episods for current show, i.e from http://www.xvideos.com/new/0/
 	"""
 	
-	def parse(self, html):
+	def parse(self, urlobject, encoding="utf8"):
+		return self.fromstring(urlobject.read(), encoding)
+	
+	def fromstring(self, html, encoding="utf8"):
 		""" Parses SourceCode and Scrape Episodes """
 		
 		# Class Vars
@@ -40,7 +43,9 @@ class VideoParser(HTMLParser.HTMLParser):
 		results = []
 		self.reset_lists()
 		self.append = results.append
-		try: self.feed(html)
+		try:
+			if encoding: self.feed(html.decode(encoding))
+			else: self.feed(html)
 		except plugin.ParserError: pass
 		
 		# Return Results
@@ -129,7 +134,10 @@ class Related(HTMLParser.HTMLParser):
 		Parses available episods for current show, i.e from http://www.xvideos.com/video6672732/teen_foot_and_fist_fucking_penetrations
 	"""
 	
-	def parse(self, html):
+	def parse(self, urlobject, encoding="utf8"):
+		return self.fromstring(urlobject.read(), encoding)
+	
+	def fromstring(self, html, encoding="utf8"):
 		""" Parses SourceCode and Scrape Episodes """
 		
 		# Class Vars
@@ -141,7 +149,9 @@ class Related(HTMLParser.HTMLParser):
 		results = []
 		self.reset_lists()
 		self.append = results.append
-		try: self.feed(html)
+		try:
+			if encoding: self.feed(html.decode(encoding))
+			else: self.feed(html)
 		except plugin.ParserError: pass
 		
 		# Return Results
